@@ -81,6 +81,7 @@ const Home = {
     return {
       products,
       searchKey: "",
+      liked: [],
     };
   },
   computed: {
@@ -91,8 +92,23 @@ const Home = {
           .includes(this.searchKey.toLowerCase());
       });
     },
+    getLikeCookie() {
+      let cookieValue = JSON.parse($cookies.get("like"));
+      cookieValue == null ? (this.liked = []) : (this.liked = cookieValue);
+    },
   },
-  methods: {},
+  methods: {
+    setLikeCookie() {
+      document.addEventListener("input", () => {
+        setTimeout(() => {
+          $cookies.set("like", JSON.stringify(this.liked));
+        }, 300);
+      });
+    },
+  },
+  mounted: () => {
+    this.getLikeCookie;
+  },
 };
 const UserSettings = {
   template: "<h1>UserSetting</h1>",
