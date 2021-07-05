@@ -53,12 +53,15 @@
         <h1>Articles</h1>
 
         <!-- search display  -->
-
+        <input v-model="searchKey" type="search" aria-label="Rechercher" placeholder="Rechercher..." autocomplete="off" id="search">
+        <span v-if="searchKey && filteredList.length >= 1">
+          {{ filteredList.length }} résultat<span v-if="filteredList.length >= 2">s</span>
+        </span>
 
         <!-- cards display  -->
         <div class="card-cart-container">
           <div class="card-container">
-            <div v-for="product in products" class="card">
+            <div v-for="product in filteredList" class="card">
 
               <div class="img-container">
                 <img v-bind:src="product.img" v-bind:alt="product.description">
