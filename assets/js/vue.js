@@ -97,6 +97,20 @@ const Home = {
       let cookieValue = JSON.parse($cookies.get("like"));
       cookieValue == null ? (this.liked = []) : (this.liked = cookieValue);
     },
+    cartTotalAmount() {
+      let total = 0;
+      for (let item in this.cart) {
+        total = total + this.cart[item].quantity * this.cart[item].price;
+      }
+      return total;
+    },
+    itemTotalAmount() {
+      let itemTotal = 0;
+      for (let item in this.cart) {
+        itemTotal = itemTotal + this.cart[item].quantity;
+      }
+      return itemTotal;
+    },
   },
   methods: {
     setLikeCookie() {
