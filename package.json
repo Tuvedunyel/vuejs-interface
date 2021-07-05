@@ -1,0 +1,23 @@
+{
+  "name": "vuejs-interface",
+  "version": "1.0.0",
+  "description": "This project shows how to add Vue to a HTML page.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tuvedunyel/vuejs-interface.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tuvedunyel/vuejs-interface/issues"
+  },
+  "homepage": "https://github.com/Tuvedunyel/vuejs-interface#readme",
+  "dependencies": {
+    "sass": "^1.35.1"
+  }
+}
