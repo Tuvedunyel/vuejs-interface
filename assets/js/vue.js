@@ -82,6 +82,7 @@ const Home = {
       products,
       searchKey: "",
       liked: [],
+      cart: [],
     };
   },
   computed: {
@@ -104,6 +105,34 @@ const Home = {
           $cookies.set("like", JSON.stringify(this.liked));
         }, 300);
       });
+    },
+    addToCart(product) {
+      // check if already in Array
+      for (let i = 0; i < this.cart.length; i++) {
+        if (this.cart[i].id === product.id) {
+          return this.cart[i].quantity++;
+        }
+      }
+      this.cart.push({
+        id: product.id,
+        img: product.img,
+        description: product.description,
+        price: product.price,
+        quantity: 1,
+      });
+    },
+    cartPlusOne(product) {
+      product.quantity = product.quantity + 1;
+    },
+    cartRemoveItem(id) {
+      this.$delete(this.cart, id);
+    },
+    cartMinusOne(product, id) {
+      if (product.quantity > 1) {
+        product.quantity = product.quantity - 1;
+      } else {
+        this.cartRemoveItem(id);
+      }
     },
   },
   mounted: () => {
